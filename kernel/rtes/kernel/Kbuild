@@ -1,0 +1,7 @@
+#obj-y += somefile.o
+obj-y += ps.o
+obj-y += calc.o
+obj-y += utimeasure.o
+obj-y += reserve.o
+obj-y += utility.o
+obj-y += end_job.o

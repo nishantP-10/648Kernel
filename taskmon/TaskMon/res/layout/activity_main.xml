@@ -1,0 +1,141 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+	
+	
+	
+    <Spinner
+        android:id="@+id/threadIDList"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip">
+    </Spinner>
+	<EditText
+        android:id="@+id/threadID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/threadIDList"
+        android:layout_below="@+id/threadIDList"
+        android:ems="10"
+        android:hint="@string/text_threadid"
+        android:inputType="number" >
+    </EditText>
+    <EditText
+        android:id="@+id/budgetC"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/threadID"
+        android:layout_below="@+id/threadID"
+        android:ems="10"
+        android:hint="@string/text_budget"
+        android:inputType="number" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/periodT"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/budgetC"
+        android:layout_below="@+id/budgetC"
+        android:ems="10"
+        android:hint="@string/text_period"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/cpuID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/periodT"
+        android:layout_below="@+id/periodT"
+        android:ems="10"
+        android:hint="@string/text_cpu"
+        android:inputType="number" />
+
+    
+
+    <Button
+        android:id="@+id/setting"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cpuID"
+        android:layout_below="@+id/cpuID"
+        android:layout_marginTop="15dp"
+        android:layout_centerVertical="true"
+        android:ems="20"
+        android:text="@string/reserve_set" />
+    
+    <Spinner
+        android:id="@+id/reservedThreadID"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:layout_below="@+id/setting"
+        android:layout_marginTop="15dp">
+    </Spinner>
+    
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/reservedThreadID"
+        android:layout_below="@+id/reservedThreadID"
+        android:layout_marginTop="15dp"
+        android:ems="20"
+        android:text="@string/reserve_cancel" />
+
+    
+
+    <Button
+        android:id="@+id/energy"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cancel"
+        android:layout_below="@+id/cancel"
+        android:layout_marginTop="15dp"
+        android:layout_centerVertical="true"
+        android:ems="20"
+        android:text="@string/energy" />
+    <Button
+        android:id="@+id/monitor"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/energy"
+        android:layout_below="@+id/energy"
+        android:layout_marginTop="15dp"
+        android:ems="20"
+        android:text="@string/monitor_start" />
+    
+    <com.androidplot.xy.XYPlot
+		android:id="@+id/xyPlot"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/monitor"
+		android:layout_below="@+id/monitor"
+        android:layout_marginTop="15dp"
+       
+		androidPlot.title="Runtime Utilization Monitoring"
+		androidPlot.domainLabel="Time(ms)"
+		androidPlot.rangeLabel="Utilization"
+		androidPlot.titleWidget.labelPaint.textSize="@dimen/title_font_size"
+		androidPlot.domainLabelWidget.labelPaint.textSize="@dimen/domain_label_font_size"
+		androidPlot.rangeLabelWidget.labelPaint.textSize="@dimen/range_label_font_size"
+		androidPlot.graphWidget.marginTop="20dp"
+		androidPlot.graphWidget.marginLeft="15dp"
+		androidPlot.graphWidget.marginBottom="25dp"
+		androidPlot.graphWidget.marginRight="15dp"
+		androidPlot.graphWidget.rangeLabelPaint.textSize="@dimen/range_tick_label_font_size"
+		androidPlot.graphWidget.rangeOriginLabelPaint.textSize="@dimen/range_tick_label_font_size"
+		androidPlot.graphWidget.domainLabelPaint.textSize="@dimen/domain_tick_label_font_size"
+		androidPlot.graphWidget.domainOriginLabelPaint.textSize="@dimen/domain_tick_label_font_size"
+		androidPlot.legendWidget.textPaint.textSize="@dimen/legend_text_font_size"
+		androidPlot.legendWidget.iconSizeMetrics.heightMetric.value="15dp"
+		androidPlot.legendWidget.iconSizeMetrics.widthMetric.value="15dp"
+		androidPlot.legendWidget.heightMetric.value="25dp"
+		androidPlot.legendWidget.positionMetrics.anchor="right_bottom"
+		androidPlot.graphWidget.gridLinePaint.color="#000000"/>
+    
+</RelativeLayout>

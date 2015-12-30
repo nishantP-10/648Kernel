@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ReservationUI</string>
+    <string name="action_settings">settings</string>
+    <string name="reserve_set">Setting</string>
+    <string name="reserve_cancel">Cancel</string>
+    <string name="monitor_start">To Monitor</string>
+    <string name="monitor_stop">To Stop(Monitoring....)</string>
+    <string name="text_threadid">Thread Id</string>
+    <string name="text_budget">Budget Computation (ms)</string>
+    <string name="text_period">Period Time (ms)</string>
+    <string name="text_cpu">CPU Core ID# (0 ~ 3)</string>
+    <string name="text_average_u">Please to Monitor below !</string>
+	<string name="energy">See Energy Monitor >>>> </string>
+</resources>

@@ -1,0 +1,60 @@
+/*******************************************************************************
+*18648 Fall 2015 Lab 1
+* Group 10
+* 	-> Mengye Gong
+*	-> Nishant Parekh
+* 	-> Ziyuan Song
+* Description: Write up for Lab 1
+********************************************************************************/
+
+1.(2 points) How does a system call execute? Explain the steps in detail from making the call in the
+userspace process to returning from the call with a result.
+
+Answer: User process cannot access kernel functions to do so the userspace applications use system calls. 
+To execute a system call the process loads the arguments into registers, loads the system call 
+number into a register, and then executes a special instruction (called a software interrupt or trap), 
+which jumps to a welldefined location in the kernel. The hardware automatically switches the processor 
+from user-mode execution to restricted kernel mode. The trap handler checks the system call number, 
+which in turn represents what kernel service the process requested. This service in turn will correspond 
+to a particular OS function that needs to be called. The OS looks at the table of system calls to determine 
+the address of the kernel function to call. The OS calls this function, and when that function returns, 
+returns back to the process. 
+
+
+2.(1 point) Define re-entrancy and thread-safety.
+Answer: A reentrant function can be called simultaneously from multiple threads, but only if each invocation uses its own data.
+
+A thread-safe function can be called simultaneously from multiple threads, even when the invocations use shared data, because 
+all references to the shared data are serialized.
+
+3. (1 point) What does it mean for a kernel to be preemptive? Is the Linux kernel you are hacking on
+preemptive?
+Answer: A kernel is said to be preemptive when a process executing in Kernel mode can be preempted by another process.
+The linux kernel we are using is preemptive since its 2.6 version.
+
+4. (2 points) When does access to data structures in userspace need to be synchronized?
+
+Answer: In the userspace if there are multiple threads accessing the same data structure then synchronization is required to 
+avoid corruption of shared resources or faulty interpretation, there is a RCU synchronisation scheme applied to userspace where 
+certain resources can be read while they are being updated there are buffers which maintain the old value when a value being 
+read is updated and the buffer is cleared once the reader is completed with its access. This is used as alternative to mutual 
+exclusion and is more effiecent as it does not prevent a process from reading a resource. The updates are expensive as there 
+is a buffer involved that holds the old value and then clears the same.
+
+
+5. (2 points) What synchronization mechanism can be used to access shared kernel data structures safely
+on both single- and multi-processor platforms?
+Anwer: Semaphore could be used in single- and multi-processor platforms saftely. Semaphore is a structrue that cocontains a counter 
+and a waiting list. There are two general operations on this structure that we used in the lab1. The down() function is used to
+ decrease the counter when the counter is greater that zero. When the counter equals to zero, the semaphore will put the calling 
+threads into the waiting list. And when the counter becomes greater than zero, these threads would try to get the sem again. 
+When each thread finishes the usage of the sem, it could call up() function, which will increase the c"w"ounter. The semaphore is 
+implemented by increasing and decreasing the counter, which enables or disable threads to obtain the authority to excute the protected code. 
+
+6. (2 points) What is the container_of macro used for in the kernel code? In rough terms, how is it
+implemented?
+
+Answer: container_of macro allows users to simplify their data structures by omitting pointers to parent
+structures. Users could get the parent structure from one inner structure and then visit other fields or 
+structures. Calculate the offset of the inner struct, and then get the beginning of the parent struct 
+by the offset of this inner struct. This is implemented by memory calculation.
